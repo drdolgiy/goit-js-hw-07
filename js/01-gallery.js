@@ -6,7 +6,10 @@ const galleryMarkup = createGalleryItemsMarkup(galleryItems);
 
 galleryContainer.insertAdjacentHTML('beforeend', galleryMarkup);
 
+galleryContainer.addEventListener('click', onGalleryContainerClick);
+
 function createGalleryItemsMarkup(galleryItems) {
+    
     return galleryItems.map(({ preview, original, description }) => {
         return `
         <div class="gallery__item">
@@ -20,8 +23,19 @@ function createGalleryItemsMarkup(galleryItems) {
     </a>
     </div>`
     }).join('');
+  
 }
 
+function onGalleryContainerClick(event) {
+    event.preventDefault();
+    const image = event.target.dataset.source;
+
+const instance = basicLightbox.create(`
+    <img src="${image}" width="800" height="600">
+`)
+
+instance.show()
+}
 
 
 
