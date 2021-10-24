@@ -8,7 +8,7 @@ galleryContainer.insertAdjacentHTML('beforeend', galleryMarkup);
 
 galleryContainer.addEventListener('click', onGalleryContainerClick);
 
-function createGalleryItemsMarkup(galleryItems) {
+function createGalleryItemsMarkup() {
     
     return galleryItems.map(({ preview, original, description }) => {
         return `
@@ -30,9 +30,9 @@ function onGalleryContainerClick(event) {
     event.preventDefault();
     const image = event.target.dataset.source;
 
-const instance = basicLightbox.create(`
+    const instance = basicLightbox.create(`
     <img src="${image}" width="800" height="600">
-`)
+`);
 
 instance.show()
 }
