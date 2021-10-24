@@ -8,10 +8,10 @@ galleryContainer.insertAdjacentHTML('beforeend', galleryMarkup);
 
 function createGalleryItemsMarkup() {  
     return galleryItems.map(({ preview, original, description }) => {
-        return `        
+        return `<li>       
         <a class="gallery__item" href="${original}">
         <img class="gallery__image" src="${preview}" alt="${description}" />
-        </a>`}).join(''); 
+        </a></li> `}).join(''); 
 }
 
 const lightbox = new SimpleLightbox(`.gallery a`, {captionsData:'alt', captionDelay:250});
